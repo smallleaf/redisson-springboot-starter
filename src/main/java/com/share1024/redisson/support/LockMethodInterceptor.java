@@ -9,11 +9,11 @@ import org.springframework.core.annotation.AnnotationUtils;
 
 import java.util.concurrent.TimeUnit;
 
-public class LockMethodInteceptor implements MethodInterceptor {
+public class LockMethodInterceptor implements MethodInterceptor {
 
     private final RedissonClient redissonClient;
 
-    public LockMethodInteceptor(RedissonClient redissonClient){
+    public LockMethodInterceptor(RedissonClient redissonClient){
         this.redissonClient = redissonClient;
     }
 

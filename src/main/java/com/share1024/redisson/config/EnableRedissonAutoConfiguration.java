@@ -1,7 +1,7 @@
 package com.share1024.redisson.config;
 
 import com.share1024.redisson.condition.SingleConditional;
-import com.share1024.redisson.support.LockMethodInteceptor;
+import com.share1024.redisson.support.LockMethodInterceptor;
 import com.share1024.redisson.support.LockPointCut;
 import com.share1024.redisson.support.RedissonDistributeLock;
 import lombok.extern.slf4j.Slf4j;
@@ -59,7 +59,7 @@ public class EnableRedissonAutoConfiguration {
     public DefaultPointcutAdvisor distributeLockAdvisor(RedissonClient redissonClient){
         DefaultPointcutAdvisor defaultPointcutAdvisor = new DefaultPointcutAdvisor();
         defaultPointcutAdvisor.setPointcut(new LockPointCut());
-        defaultPointcutAdvisor.setAdvice(new LockMethodInteceptor(redissonClient));
+        defaultPointcutAdvisor.setAdvice(new LockMethodInterceptor(redissonClient));
         return defaultPointcutAdvisor;
     }
 
