@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * yesheng
  */
-public class RedissonDistributeLock implements Lock{
+public class RedissonDistributeLock implements DistributeLock {
 
     private Logger logger  = LoggerFactory.getLogger(RedissonDistributeLock.class);
 

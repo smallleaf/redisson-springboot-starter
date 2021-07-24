@@ -4,7 +4,7 @@ import org.redisson.api.RedissonClient;
 
 import java.util.concurrent.TimeUnit;
 
-public interface Lock {
+public interface DistributeLock {
 
     void lock(String key,LockOperator operator);
 
