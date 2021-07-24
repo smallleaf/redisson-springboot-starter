@@ -1,6 +1,6 @@
 package com.share1024.redisson.support;
 
-import com.share1024.redisson.annotation.DistributeLock;
+import com.share1024.redisson.annotation.DistributeMethodLock;
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
 import org.redisson.api.RLock;
@@ -19,7 +19,7 @@ public class LockMethodInteceptor implements MethodInterceptor {
 
     @Override
     public Object invoke(MethodInvocation methodInvocation) throws Throwable {
-        DistributeLock distributeLock = AnnotationUtils.findAnnotation(methodInvocation.getMethod(),DistributeLock.class);
+        DistributeMethodLock distributeLock = AnnotationUtils.findAnnotation(methodInvocation.getMethod(), DistributeMethodLock.class);
         RLock lock = redissonClient.getLock(distributeLock.value());
         boolean res = lock.tryLock(distributeLock.lockMostMilTime(), TimeUnit.MILLISECONDS);
         Object result = null;

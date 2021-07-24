@@ -4,6 +4,7 @@ import com.share1024.redisson.condition.SingleConditional;
 import com.share1024.redisson.support.LockMethodInteceptor;
 import com.share1024.redisson.support.LockPointCut;
 import com.share1024.redisson.support.RedissonDistributeLock;
+import lombok.extern.slf4j.Slf4j;
 import org.redisson.Redisson;
 import org.redisson.api.RedissonClient;
 import org.redisson.config.Config;
@@ -26,12 +27,13 @@ import org.springframework.context.annotation.*;
 @EnableConfigurationProperties({SingleServerConfigProperties.class,ConfigProperties.class})
 @Configuration
 @Import(AutoProxyRegistrar.class)
+@Slf4j
 public class EnableRedissonAutoConfiguration {
 
     @Bean
     public Config config(ConfigProperties configProperties){
         Config config = new Config();
-        BeanUtils.copyProperties(configProperties,config);
+        config.setLockWatchdogTimeout(configProperties.getLockWatchdogTimeout());
         return config;
     }
 

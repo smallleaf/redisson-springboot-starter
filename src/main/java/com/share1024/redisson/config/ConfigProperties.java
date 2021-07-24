@@ -21,7 +21,7 @@ public class ConfigProperties {
 
     private boolean referenceEnabled = true;
 
-    private long lockWatchdogTimeout = 5 * 1000;
+    private long lockWatchdogTimeout = 30 * 1000;
 
     private long reliableTopicWatchdogTimeout = TimeUnit.MINUTES.toMillis(10);
 

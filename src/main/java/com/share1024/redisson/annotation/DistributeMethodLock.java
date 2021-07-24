@@ -13,7 +13,7 @@ import java.lang.annotation.Target;
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface DistributeLock {
+public @interface DistributeMethodLock {
 
     @AliasFor("name")
     String value() default "";

@@ -1,6 +1,6 @@
 package com.share1024.redisson.support;
 
-import com.share1024.redisson.annotation.DistributeLock;
+import com.share1024.redisson.annotation.DistributeMethodLock;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.aop.support.StaticMethodMatcherPointcut;
 import org.springframework.core.annotation.AnnotationUtils;
@@ -14,10 +14,10 @@ public class LockPointCut extends StaticMethodMatcherPointcut {
 
     @Override
     public boolean matches(Method method, Class<?> aClass) {
-        DistributeLock lock = AnnotationUtils.findAnnotation(method,DistributeLock.class);
+        DistributeMethodLock lock = AnnotationUtils.findAnnotation(method, DistributeMethodLock.class);
         if(lock != null){
             if(!StringUtils.hasText(lock.value())){
-                throw new RuntimeException("the DistributeLock name cannot be empty "+aClass.getName());
+                throw new RuntimeException("the DistributeMethodLock name cannot be empty "+aClass.getName());
             }
             return  true;
         }
