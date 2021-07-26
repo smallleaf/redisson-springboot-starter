@@ -14,6 +14,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.*;
 
@@ -38,6 +39,7 @@ public class EnableRedissonAutoConfiguration {
     }
 
     @Conditional(SingleConditional.class)
+    @ConditionalOnProperty(prefix = "spring.redisson.single",matchIfMissing = true)
     @ConditionalOnMissingBean(RedissonClient.class)
     @Bean
     public RedissonClient redissonClient(Config config,SingleServerConfigProperties singleServerConfigProperties){
