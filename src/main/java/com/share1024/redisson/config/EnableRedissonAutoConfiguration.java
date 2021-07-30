@@ -39,7 +39,6 @@ public class EnableRedissonAutoConfiguration {
     }
 
     @Conditional(SingleConditional.class)
-    @ConditionalOnProperty(prefix = "spring.redisson.single",matchIfMissing = true)
     @ConditionalOnMissingBean(RedissonClient.class)
     @Bean
     public RedissonClient redissonClient(Config config,SingleServerConfigProperties singleServerConfigProperties){
